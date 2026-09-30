@@ -42,6 +42,47 @@ impacto es el factor con mayor coste de negocio si el riesgo se materializa).
 
 ---
 
+## Actualización tras acta de entrevista de negocio (2026-09-30)
+
+Ya existe [entrevista-negocio.md](entrevista-negocio.md). Sin modificar la
+tabla original, se deja constancia de lo que aporta a estos riesgos. De sus
+19 preguntas, solo la 1 (y la primera mitad de la 2) tienen respuesta
+**REAL**; el resto son **SIMULADAS** (el consultor respondiendo en el papel
+de negocio) y no deben tratarse como decisión real ni como cierre de un
+riesgo — se registran como hipótesis de trabajo pendientes de confirmar.
+
+- **R1 (ausencia de autenticación)**: acta, pregunta 2 (primera parte),
+  respondida por gerencia — **REAL**: el acceso al puerto 3000 está hoy
+  limitado a la red de la oficina; no consta acceso desde fuera. Esto es un
+  hecho nuevo confirmado, no documentado hasta ahora (antes solo se sabía que
+  no había autenticación, no si el perímetro de red mitigaba el riesgo). La
+  probabilidad de explotación por parte de alguien ajeno a la oficina baja en
+  la práctica actual, aunque la tabla mantiene "Alta" porque sigue siendo
+  cierto que cualquiera dentro de esa red, sin excepción, puede operar sin
+  ningún control. La repregunta de la misma pregunta 2 (¿se exige
+  autenticación en la modernización?) tiene respuesta **SIMULADA**: sí,
+  exigirla — hipótesis pendiente de confirmar con gerencia real antes de
+  fijarla como requisito.
+- **R6 (dos fórmulas de prorrateo)**: acta, pregunta 1, respondida por
+  Puri/Marga — **REAL**: el criterio correcto de aquí en adelante es días
+  reales del mes. Esto no reduce el riesgo ya materializado en el pasado (las
+  facturas ya emitidas con cada fórmula no se recalculan), pero fija cuál de
+  las dos implementaciones debe quedar como la única al modernizar, cerrando
+  la ambigüedad de origen de este riesgo.
+- **R7 (copia de seguridad única, manual y semanal)**: acta, pregunta 16,
+  respondida en el papel de gerencia — **SIMULADA**: invertir en copia
+  automática y externa. Hipótesis de trabajo registrada, pendiente de
+  confirmación real de gerencia; no se cierra el riesgo con esta sola
+  respuesta.
+- **R8 (validación de NIF sin dígito de control)**: acta, pregunta 5,
+  respondida en el papel de Marga — **SIMULADA**: añadir la comprobación
+  automática. Hipótesis registrada, pendiente de confirmación real.
+
+El resto de riesgos de esta tabla (R2 a R5, R9 a R16) no fueron objeto de
+ninguna pregunta directa en esta acta; siguen tal cual estaban documentados.
+
+---
+
 ## Notas de cobertura
 
 - Este registro se apoya en los mismos ficheros ya inventariados en

@@ -321,6 +321,46 @@ antes.
 
 ---
 
+### H22 — 30/09/2026: primera entrevista de negocio real (parcial): se fija el criterio de prorrateo en días reales
+
+**Qué pasó**: a diferencia de las entradas anteriores de esta cronología
+(todas reconstruidas a partir de comentarios del código), esta entrada
+procede de una entrevista de negocio real —
+[entrevista-negocio.md](entrevista-negocio.md), preguntas 1 y 2 (primera
+parte)— que sí tuvo lugar en esta sesión, no de una cita de código. Dos
+hechos quedan confirmados directamente por negocio, no por simulación:
+1. El criterio de prorrateo de baja/alta a mitad de mes que debe regir de
+   aquí en adelante es el de **días reales del mes** (el mismo que ya usa la
+   remesa automática desde 2021, no el mes comercial de 30 días heredado del
+   Access). Esta decisión **contradice** el testimonio histórico citado en
+   H1/H5 y en [services/calculo.js:92-94](../../services/calculo.js#L92-L94)
+   ("Asi lo hacia Paco a mano en el Access y asi lo espera la gestoria"), que
+   hasta esta fecha era el único testimonio de negocio documentado a favor de
+   la fórmula contraria. No se borra ni se reescribe esa cita histórica: se
+   deja constancia de que ha quedado superada por una decisión posterior y
+   real, sin confirmar todavía si la propia gestoría comparte el cambio de
+   criterio.
+2. El acceso a la aplicación (puerto 3000, ver H-implícito en A-02 del
+   registro de anomalías) está hoy limitado a la red interna de la oficina;
+   no hay acceso confirmado desde fuera.
+**Implicados**: Puri, Marga (pregunta 1); gerencia (pregunta 2, primera
+parte).
+**Evidencia**: [entrevista-negocio.md, preguntas 1 y 2](entrevista-negocio.md).
+**Pregunta para negocio**: dado que esta decisión contradice el testimonio
+histórico de Paco/gestoría, ¿comparte la propia gestoría (Puri) el cambio de
+criterio, o su expectativa seguía siendo la del mes comercial de 30 días?
+Debe confirmarse directamente antes de dar el cambio por definitivo en las
+specs formales.
+
+> **Nota metodológica**: esta entrada rompe, de forma deliberada y señalada,
+> el método declarado al inicio de este documento (solo comentarios de
+> código). Se incorpora porque el encargo de propagar la primera entrevista
+> de negocio exige registrar aquí lo que el negocio revele y no estuviera ya
+> documentado; el resto de la cronología (H1-H21) sigue siendo, exclusivamente,
+> reconstrucción a partir de comentarios de código.
+
+---
+
 ## Advertencias de "no tocar" sin fecha asociada
 
 Estas advertencias están presentes en el código pero el comentario no indica
