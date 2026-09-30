@@ -1,0 +1,54 @@
+<%- include('cabecera') %>
+<div class="factura-impresa">
+  <table style="width:100%"><tr>
+    <td>
+      <strong><%= empresa.nombre %></strong><br>
+      <%= empresa.nif %><br><%= empresa.direccion %><br>
+      <%= empresa.cp %> <%= empresa.poblacion %><br><%= empresa.telefono %>
+    </td>
+    <td style="text-align:right">
+      <h2>FACTURA <%= f.numero %></h2>
+      Fecha: <%= util.fechaBonita(f.fecha) %><br>
+      <% if (f.vencimiento) { %>Vencimiento: <%= util.fechaBonita(f.vencimiento) %><br><% } %>
+      <% if (f.rectifica_a) { %><strong>Rectifica a: <%= f.rectifica_a %></strong><br><% } %>
+      Estado: <%= f.estado %>
+    </td>
+  </tr></table>
+  <p>
+    <strong>Cliente:</strong> <%= f.cliente %> &middot; <%= f.nif || '' %><br>
+    <%= f.direccion || '' %> &middot; <%= f.cp || '' %> <%= f.poblacion || '' %>
+    <% if (f.recargo_equivalencia) { %><br><em>Cliente en r&eacute;gimen de recargo de equivalencia</em><% } %>
+  </p>
+  <table class="tabla-datos">
+    <tr><th>Descripci&oacute;n</th><th class="num">Cant.</th><th class="num">Precio</th><th class="num">Base</th><th>IVA</th><th class="num">Cuota IVA</th><th class="num">Rec. eq.</th></tr>
+    <% lineas.forEach(function(l){ %>
+    <tr>
+      <td><%= l.descripcion %></td>
+      <td class="num"><%= l.cantidad %></td>
+      <td class="num"><%= util.formatearImporte(l.precio) %></td>
+      <td class="num"><%= util.formatearImporte(l.base) %></td>
+      <td><%= l.tipo_iva %>%</td>
+      <td class="num"><%= util.formatearImporte(l.cuota_iva) %></td>
+      <td class="num"><%= l.cuota_recargo ? util.formatearImporte(l.cuota_recargo) : '' %></td>
+    </tr>
+    <% }) %>
+  </table>
+  <table class="totales">
+    <tr><td>Base imponible</td><td class="num"><%= util.formatearImporte(f.base) %> &euro;</td></tr>
+    <tr><td>IVA</td><td class="num"><%= util.formatearImporte(f.iva) %> &euro;</td></tr>
+    <% if (f.recargo) { %><tr><td>Recargo equivalencia</td><td class="num"><%= util.formatearImporte(f.recargo) %> &euro;</td></tr><% } %>
+    <tr class="total"><td>TOTAL</td><td class="num"><%= util.formatearImporte(f.total) %> &euro;</td></tr>
+  </table>
+  <% if (f.observaciones) { %><p class="nota"><%= f.observaciones %></p><% } %>
+  <p class="nota"><%= empresa.registro %></p>
+</div>
+<p class="no-imprimir">
+  <button onclick="window.print()">Imprimir / PDF</button>
+  <% if (f.estado === 'emitida' && f.serie === 'FA') { %>
+  <form method="post" action="/facturas/<%= f.id %>/cobrar" style="display:inline"><button>Marcar cobrada</button></form>
+  <form method="post" action="/facturas/<%= f.id %>/rectificar" style="display:inline">
+    <input name="motivo" placeholder="Motivo de la rectificaci&oacute;n" size="30"><button>Rectificar (abono total)</button>
+  </form>
+  <% } %>
+</p>
+<%- include('pie') %>

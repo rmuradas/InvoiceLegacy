@@ -1,0 +1,11 @@
+<%- include('cabecera') %>
+<h2>Inicio</h2>
+<table class="tabla-datos" style="width:auto">
+  <tr><td>Facturas emitidas (total hist&oacute;rico)</td><td class="num"><%= totalFacturas %></td></tr>
+  <tr><td>Facturas pendientes de cobro</td><td class="num"><%= pendientes %></td></tr>
+  <tr><td>Importe pendiente de cobro</td><td class="num"><%= importePendiente.toFixed(2) %> &euro;</td></tr>
+  <tr><td>Clientes activos</td><td class="num"><%= clientes %></td></tr>
+</table>
+<p class="nota">Recordatorio: la remesa de cuotas se lanza el d&iacute;a 1 desde el ordenador de Marga
+(<code>node scripts/remesa_mensual.js AAAA-MM</code>).</p>
+<%- include('pie') %>

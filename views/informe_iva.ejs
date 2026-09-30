@@ -1,0 +1,17 @@
+<%- include('cabecera') %>
+<h2>Resumen de IVA repercutido &middot; <%= trimestre %>T <%= anyo %></h2>
+<table class="tabla-datos" style="width:auto">
+<tr><th>Tipo</th><th class="num">Base</th><th class="num">Cuota IVA</th><th class="num">Recargo eq.</th></tr>
+<% var tb=0, ti=0, tr=0; filas.forEach(function(x){ tb+=x.base; ti+=x.cuota; tr+=x.recargo; %>
+<tr><td><%= x.tipo_iva %>%</td>
+  <td class="num"><%= util.formatearImporte(x.base) %></td>
+  <td class="num"><%= util.formatearImporte(x.cuota) %></td>
+  <td class="num"><%= util.formatearImporte(x.recargo) %></td></tr>
+<% }) %>
+<tr class="total"><td>TOTAL</td>
+  <td class="num"><%= util.formatearImporte(tb) %></td>
+  <td class="num"><%= util.formatearImporte(ti) %></td>
+  <td class="num"><%= util.formatearImporte(tr) %></td></tr>
+</table>
+<p class="nota">Estos importes los revisa la gestor&iacute;a antes del modelo 303. Se calculan sumando las l&iacute;neas (las rectificativas restan solas).</p>
+<%- include('pie') %>

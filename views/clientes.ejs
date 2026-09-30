@@ -1,0 +1,27 @@
+<%- include('cabecera') %>
+<h2>Clientes</h2>
+<% if (aviso) { %><p class="aviso"><%= aviso %></p><% } %>
+<table class="tabla-datos">
+<tr><th>Nombre</th><th>NIF</th><th>Poblaci&oacute;n</th><th>R.E.</th><th>D&iacute;as pago</th><th></th></tr>
+<% clientes.forEach(function(c){ %>
+<tr class="<%= c.activo ? '' : 'baja' %>">
+  <td><%= c.nombre %></td><td><%= c.nif || '' %></td><td><%= c.poblacion || '' %></td>
+  <td><%= c.recargo_equivalencia ? 'S&Iacute;' : '' %></td>
+  <td class="num"><%= c.dias_pago || '' %></td>
+  <td><% if (c.activo) { %><form method="post" action="/clientes/<%= c.id %>/baja" style="display:inline"><button class="mini">baja</button></form><% } else { %>de baja<% } %></td>
+</tr>
+<% }) %>
+</table>
+<h3>Nuevo cliente</h3>
+<form method="post" action="/clientes/nuevo" class="formulario">
+  <input name="nombre" placeholder="Nombre *" required>
+  <input name="nif" placeholder="NIF/CIF">
+  <input name="direccion" placeholder="Direcci&oacute;n">
+  <input name="cp" placeholder="CP" size="6">
+  <input name="poblacion" placeholder="Poblaci&oacute;n">
+  <input name="email" placeholder="Email">
+  <label><input type="checkbox" name="recargo_equivalencia" value="1"> Recargo equivalencia</label>
+  <input name="dias_pago" placeholder="D&iacute;as pago" size="6">
+  <button>Guardar</button>
+</form>
+<%- include('pie') %>

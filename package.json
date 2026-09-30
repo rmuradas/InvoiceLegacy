@@ -1,0 +1,17 @@
+{
+  "name": "gesfact",
+  "version": "2.4.0",
+  "description": "Programa de facturacion Suministros Hidalgo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Julian",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.20.5",
+    "ejs": "^3.1.10",
+    "express": "^4.22.2",
+    "sqlite3": "^5.1.7"
+  }
+}

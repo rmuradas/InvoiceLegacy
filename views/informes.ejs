@@ -1,0 +1,10 @@
+<%- include('cabecera') %>
+<h2>Informes</h2>
+<ul>
+  <li><a href="/informes/iva?anyo=<%= anyo %>&trimestre=1">Resumen IVA 1T <%= anyo %></a> &middot;
+      <a href="/informes/iva?anyo=<%= anyo %>&trimestre=2">2T</a> &middot;
+      <a href="/informes/iva?anyo=<%= anyo %>&trimestre=3">3T</a> &middot;
+      <a href="/informes/iva?anyo=<%= anyo %>&trimestre=4">4T</a></li>
+  <li><a href="/informes/export-gestoria?anyo=<%= anyo %>">Exportar facturas <%= anyo %> para la gestor&iacute;a (CSV)</a></li>
+</ul>
+<%- include('pie') %>

@@ -1,0 +1,18 @@
+<%- include('cabecera') %>
+<h2>Contratos (cuotas mensuales)</h2>
+<table class="tabla-datos">
+<tr><th>Cliente</th><th>Concepto</th><th class="num">Cuota/mes</th><th>IVA</th><th>Alta</th><th>Baja</th><th></th></tr>
+<% contratos.forEach(function(co){ %>
+<tr class="<%= co.fecha_baja ? 'baja' : '' %>">
+  <td><%= co.cliente %></td><td><%= co.concepto %></td>
+  <td class="num"><%= co.cuota.toFixed(2) %></td><td><%= co.tipo_iva %>%</td>
+  <td><%= util.fechaBonita(co.fecha_alta) %></td><td><%= co.fecha_baja ? util.fechaBonita(co.fecha_baja) : '' %></td>
+  <td><% if (!co.fecha_baja) { %>
+    <form method="post" action="/contratos/<%= co.id %>/baja" style="display:inline">
+      <input type="date" name="fecha_baja"><button class="mini">baja</button>
+    </form><% } %></td>
+</tr>
+<% }) %>
+</table>
+<p class="nota">Al dar de baja a mitad de mes, el importe del prorrateo del &uacute;ltimo mes sale arriba en la barra de direcciones; administraci&oacute;n emite esa factura a mano.</p>
+<%- include('pie') %>

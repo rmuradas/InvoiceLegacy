@@ -1,0 +1,24 @@
+<%- include('cabecera') %>
+<h2>Facturas</h2>
+<form method="get" action="/facturas" class="formulario">
+  Estado:
+  <select name="estado" onchange="this.form.submit()">
+    <option value="">(todas)</option>
+    <option value="emitida" <%= filtro === 'emitida' ? 'selected' : '' %>>emitidas</option>
+    <option value="cobrada" <%= filtro === 'cobrada' ? 'selected' : '' %>>cobradas</option>
+    <option value="rectificada" <%= filtro === 'rectificada' ? 'selected' : '' %>>rectificadas</option>
+  </select>
+</form>
+<table class="tabla-datos">
+<tr><th>N&uacute;mero</th><th>Fecha</th><th>Cliente</th><th class="num">Total</th><th>Estado</th></tr>
+<% facturas.forEach(function(f){ %>
+<tr>
+  <td><a href="/facturas/<%= f.id %>"><%= f.numero %></a></td>
+  <td><%= util.fechaBonita(f.fecha) %></td>
+  <td><%= f.cliente %></td>
+  <td class="num"><%= util.formatearImporte(f.total) %> &euro;</td>
+  <td><%= f.estado %><%= f.rectifica_a ? ' (rectifica ' + f.rectifica_a + ')' : '' %></td>
+</tr>
+<% }) %>
+</table>
+<%- include('pie') %>

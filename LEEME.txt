@@ -1,0 +1,20 @@
+GESFACT 2.x - programa de facturacion de Suministros Hidalgo
+============================================================
+
+INSTALACION (ordenador nuevo de oficina):
+ 1. Instalar node 8 desde nodejs.org (la version LTS)
+ 2. Copiar la carpeta gesfact desde \\SERVIDOR\compartido\gesfact
+ 3. Abrir simbolo del sistema en la carpeta y escribir: npm install
+ 4. Arrancar con: node server.js
+ 5. Entrar en http://localhost:3000 (crear acceso directo en el escritorio)
+
+PENDIENTE:
+ - Migrar la base de datos a MySQL del servidor nuevo (el volcado de
+   prueba esta en datos/migracion_mysql_2018.sql). SIN PRISA, sqlite va bien.
+ - Arreglar el envio de facturas por email (roto desde lo de Arsys 2022)
+ - Roberto empezo un modulo de albaranes en 2021, esta a medias en su
+   ordenador (preguntarle si vuelve en campaña)
+
+COPIAS DE SEGURIDAD: Marga copia datos/gesfact.db a un pendrive los viernes.
+
+Julian - ultima actualizacion de este fichero: 11/03/2019 (aprox)

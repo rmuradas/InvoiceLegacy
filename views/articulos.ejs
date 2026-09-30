@@ -1,0 +1,22 @@
+<%- include('cabecera') %>
+<h2>Art&iacute;culos</h2>
+<table class="tabla-datos">
+<tr><th>Ref.</th><th>Nombre</th><th class="num">Precio</th><th>IVA</th><th>Unidad</th><th></th></tr>
+<% articulos.forEach(function(a){ %>
+<tr class="<%= a.activo ? '' : 'baja' %>">
+  <td><%= a.referencia %></td><td><%= a.nombre %></td>
+  <td class="num"><%= a.precio.toFixed(2) %></td><td><%= a.tipo_iva %>%</td><td><%= a.unidad %></td>
+  <td><% if (a.activo) { %><form method="post" action="/articulos/<%= a.id %>/baja" style="display:inline"><button class="mini">baja</button></form><% } %></td>
+</tr>
+<% }) %>
+</table>
+<h3>Nuevo art&iacute;culo</h3>
+<form method="post" action="/articulos/nuevo" class="formulario">
+  <input name="referencia" placeholder="Referencia" size="10">
+  <input name="nombre" placeholder="Nombre *" required>
+  <input name="precio" placeholder="Precio sin IVA *" size="10" required>
+  <select name="tipo_iva"><option value="21">21%</option><option value="10">10%</option><option value="4">4%</option></select>
+  <input name="unidad" placeholder="Unidad" size="6" value="ud">
+  <button>Guardar</button>
+</form>
+<%- include('pie') %>

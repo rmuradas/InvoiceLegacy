@@ -1,0 +1,28 @@
+/* estilos.css - GesFact (Julian 2017, retocado por Roberto 2021) */
+body { font-family: Verdana, Arial, sans-serif; font-size: 13px; margin: 0; background: #e8e8e0; color: #222; }
+#cabecera { background: #2c4a6e; color: #fff; padding: 8px 16px; }
+#cabecera h1 { display: inline; font-size: 20px; margin-right: 24px; }
+#cabecera small { color: #9db8d6; }
+#menu { display: inline; }
+#menu a { color: #dce6f2; margin-right: 14px; text-decoration: none; }
+#menu a:hover { text-decoration: underline; }
+#contenido { background: #fff; margin: 14px; padding: 14px 18px; border: 1px solid #bbb; }
+#pie { color: #777; font-size: 11px; padding: 0 16px 12px; }
+h2 { font-size: 16px; color: #2c4a6e; }
+h3 { font-size: 14px; color: #2c4a6e; }
+.tabla-datos { border-collapse: collapse; width: 100%; margin: 8px 0; }
+.tabla-datos th { background: #dfe7f0; text-align: left; }
+.tabla-datos th, .tabla-datos td { border: 1px solid #ccc; padding: 4px 8px; }
+.tabla-datos tr:nth-child(even) td { background: #f6f8fa; }
+.num { text-align: right; }
+.baja td { color: #999; text-decoration: line-through; }
+.aviso { background: #fff3cd; border: 1px solid #e0c66a; padding: 6px 10px; }
+.nota { color: #777; font-size: 11px; }
+.formulario input, .formulario select { margin: 2px 6px 2px 0; }
+button { background: #2c4a6e; color: #fff; border: 1px solid #1d3450; padding: 4px 10px; cursor: pointer; }
+button.mini { padding: 1px 6px; font-size: 11px; }
+.totales { margin-left: auto; margin-top: 8px; border-collapse: collapse; }
+.totales td { padding: 3px 10px; }
+.total td { font-weight: bold; border-top: 2px solid #333; }
+.factura-impresa { max-width: 800px; }
+@media print { #cabecera, #menu, #pie, .no-imprimir { display: none; } #contenido { border: none; margin: 0; } }

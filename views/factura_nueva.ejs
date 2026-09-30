@@ -1,0 +1,29 @@
+<%- include('cabecera') %>
+<h2>Nueva factura</h2>
+<form method="post" action="/facturas/nueva">
+  <p>
+    Cliente:
+    <select name="cliente_id" required>
+      <% clientes.forEach(function(c){ %><option value="<%= c.id %>"><%= c.nombre %></option><% }) %>
+    </select>
+    Fecha: <input type="date" name="fecha">
+  </p>
+  <table class="tabla-datos" id="tabla-lineas">
+    <tr><th>Descripci&oacute;n</th><th>Cantidad</th><th>Precio sin IVA</th><th>IVA</th></tr>
+    <% for (var i = 0; i < 6; i++) { %>
+    <tr>
+      <td><input name="desc" list="lista-articulos" style="width:98%" class="campo-desc"></td>
+      <td><input name="cant" size="8" value="1"></td>
+      <td><input name="precio" size="10" class="campo-precio"></td>
+      <td><select name="iva"><option value="21">21%</option><option value="10">10%</option><option value="4">4%</option></select></td>
+    </tr>
+    <% } %>
+  </table>
+  <datalist id="lista-articulos">
+    <% articulos.forEach(function(a){ %><option value="<%= a.nombre %>" data-precio="<%= a.precio %>" data-iva="<%= a.tipo_iva %>"></option><% }) %>
+  </datalist>
+  <p>Observaciones: <input name="obs" size="60"></p>
+  <p><button>Emitir factura</button> <span class="nota">(los descuentos por volumen se aplican solos)</span></p>
+</form>
+<script src="/js/factura.js"></script>
+<%- include('pie') %>
